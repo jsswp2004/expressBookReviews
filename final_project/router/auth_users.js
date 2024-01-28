@@ -46,6 +46,21 @@ const isValid = (username) => {
 const authenticatedUser = (username, password) => {
   return users.some(user => user.username === username && user.password === password);
 }
+// Register a new user
+regd_users.post("/register", (req, res) => {
+  const { username, password } = req.body;
+
+  if (!username || !password) {
+    return res.status(400).json({ message: "Username and password are required" });
+  }
+
+  if (isValid(username)) {
+    return res.status(409).json({ message: "Username already exists" });
+  }
+
+  users.push({ username, password });
+  res.status(201).json({ message: "User registered successfully" });
+});
 
 // Only registered users can login
 regd_users.post("/login", (req, res) => {
