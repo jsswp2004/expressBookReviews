@@ -1,6 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const session = require('express-session')
+const session = require('express-session');
 const customer_routes = require('./router/auth_users.js').authenticated;
 const genl_routes = require('./router/general.js').general;
 
@@ -28,6 +28,7 @@ const authenticatedUser = (username, password) => {
 
 const app = express();
 
+// Use JSON middleware
 app.use(express.json());
 
 app.use("/customer", session({ secret: "fingerprint_customer", resave: true, saveUninitialized: true }))
@@ -85,7 +86,12 @@ app.post("/register", (req, res) => {
 
 const PORT = 5001;
 
+// Set the port
+// const PORT = process.env.PORT || 5000;
+
+// Route handlers
 app.use("/customer", customer_routes);
 app.use("/", genl_routes);
 
-app.listen(PORT, () => console.log("Server is running"));
+// Start the server
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
