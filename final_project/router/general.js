@@ -85,16 +85,16 @@ public_users.get('/', (req, res) => {
 
 
 // Get book details based on ISBN
-// public_users.get('/isbn/:isbn', (req, res) => {
-//   const { isbn } = req.params;
-//   const book = Object.values(books).find(book => book.isbn === isbn);
+public_users.get('/isbn/:isbn', (req, res) => {
+  const { isbn } = req.params;
+  const book = Object.values(books).find(book => book.isbn === isbn);
 
-//   if (book) {
-//     res.status(200).json(book);
-//   } else {
-//     res.status(404).json({ message: "Book not found" });
-//   }
-// });
+  if (book) {
+    res.status(200).json(book);
+  } else {
+    res.status(404).json({ message: "Book not found" });
+  }
+});
 
 
 // Using Promise Callbacks
@@ -119,16 +119,16 @@ public_users.get('/isbn/:isbn', (req, res) => {
 });
 
 // Get book details based on author
-// public_users.get('/author/:author', (req, res) => {
-//   const { author } = req.params;
-//   const filteredBooks = Object.values(books).filter(book => book.author === author);
+public_users.get('/author/:author', (req, res) => {
+  const { author } = req.params;
+  const filteredBooks = Object.values(books).filter(book => book.author === author);
 
-//   if (filteredBooks.length) {
-//     res.status(200).json(filteredBooks);
-//   } else {
-//     res.status(404).json({ message: "No books found for this author" });
-//   }
-// });
+  if (filteredBooks.length) {
+    res.status(200).json(filteredBooks);
+  } else {
+    res.status(404).json({ message: "No books found for this author" });
+  }
+});
 
 // using Promise Callbacks
 const axios = require('axios');
@@ -155,16 +155,16 @@ public_users.get('/author/:author', async (req, res) => {
 
 
 // Get all books based on title
-// public_users.get('/title/:title', (req, res) => {
-//   const { title } = req.params;
-//   const filteredBooks = Object.values(books).filter(book => book.title === title);
+public_users.get('/title/:title', (req, res) => {
+  const { title } = req.params;
+  const filteredBooks = Object.values(books).filter(book => book.title === title);
 
-//   if (filteredBooks.length) {
-//     res.status(200).json(filteredBooks);
-//   } else {
-//     res.status(404).json({ message: "No books found with this title" });
-//   }
-// });
+  if (filteredBooks.length) {
+    res.status(200).json(filteredBooks);
+  } else {
+    res.status(404).json({ message: "No books found with this title" });
+  }
+});
 // using Promise Callbacks
 // const axios = require('axios');
 
